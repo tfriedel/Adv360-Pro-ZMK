@@ -58,12 +58,19 @@ CONFIG_USB_DEVICE_PID=0x0362
 CONFIG_USB_DEVICE_MANUFACTURER="Kinesis Corporation"
 CONFIG_BT_DIS_MANUF="Kinesis Corporation"
 
-# Turn on logging, and set ZMK logging to debug output
-CONFIG_LOG=y
+# # Turn on logging, and set ZMK logging to debug output
+# CONFIG_LOG=y
 CONFIG_ZMK_USB_LOGGING=y
 
-CONFIG_ZMK_SLEEP=y
+# Turn off logging, for battery savings
+CONFIG_LOG=n
+# 10 minutes of inactivity before entering idle state
 CONFIG_ZMK_IDLE_TIMEOUT=600000
-CONFIG_ZMK_IDLE_SLEEP_TIMEOUT=900000
+
+# for latency improvement
+# Eager debounce, suggested in https://www.youtube.com/watch?v=jWL4nU-vtWs
+CONFIG_ZMK_KSCAN_DEBOUNCE_PRESS_MS=0
+# 7.5ms BLE polling config: 
+CONFIG_BT_PERIPHERAL_PREF_MAX_INT=6
 
 CONFIG_BUILD_OUTPUT_UF2=y
